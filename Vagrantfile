@@ -25,15 +25,14 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = ENV['VAGRANT_HOSTNAME']
 
 	# Arquivo que ira inicializar quando a maquina subir pela primeira vez
- 	config.vm.provision "shell", path: "./shell/updatesystem.sh", privileged: true
+ 	config.vm.provision "shell", path: "./scripts/updatesystem.sh", privileged: true
     config.vm.provision :reload
-    config.vm.provision "shell", path: "./shell/firstboot.sh", privileged: true
+    config.vm.provision "shell", path: "./scripts/firstboot.sh", privileged: true
 
     #config.vm.provision "shell", path: "bootstrap.sh"
 
 	# Pastas mapeadas
     config.vm.synced_folder "./html", "/var/www/html", type: "rsync"
-    config.vm.provision "file", source: "./src/", destination: "$HOME/"
 
     config.vm.provider "virtualbox" do |v|
         v.name =  ENV['VAGRANT_HOSTNAME']
