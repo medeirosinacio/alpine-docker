@@ -1,7 +1,10 @@
-Vagrant.configure("2") do |config|
+# dependencia para verificar se os plugins estão instalados
+require File.dirname(__FILE__)+"/scripts/dependency_manager"
 
-	# Plugins 
-	config.vagrant.plugins = ["vagrant-env", "vagrant-disksize", "vagrant-reload", "vagrant-alpine"]
+# Plugins locais que o projeto requer
+check_plugins ["vagrant-env", "vagrant-disksize", "vagrant-reload", "vagrant-alpine"]
+
+Vagrant.configure("2") do |config|
 
     # Seta a não instalação VBoxGuestAdditions
     config.vbguest.auto_update = false
