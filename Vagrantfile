@@ -2,7 +2,7 @@
 require File.dirname(__FILE__)+"/scripts/dependency_manager"
 
 # Plugins locais que o projeto requer
-check_plugins ["vagrant-env", "vagrant-disksize", "vagrant-reload", "vagrant-alpine"]
+check_plugins ["vagrant-env", "vagrant-disksize", "vagrant-reload", "vagrant-alpine", "vagrant-vbguest"]
 
 Vagrant.configure("2") do |config|
 
