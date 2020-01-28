@@ -21,14 +21,14 @@ Se um pacote Vagrant não estiver disponível para sua plataforma, você também
  1. Crie um arquivo _.env_ e popule as seguintes variaveis:
  
 ``` 
- #ALL
- IP_HOST=192.168.70.71
- 
- #Vagrantfile
- VAGRANT_ALPINE_VERSION=38
- VAGRANT_HOSTNAME=alpine-docker
- VAGRANT_DISKSIZE_GB=50
- VAGRANT_MEMORY_MB=2048
+#ALL
+IP_HOST=192.168.70.71
+
+#Vagrantfile
+VAGRANT_ALPINE_VERSION=38
+VAGRANT_HOSTNAME=alpine-docker
+VAGRANT_DISKSIZE_GB=50
+VAGRANT_MEMORY_MB=2048
  ```
  2. Execute o comando:
 
