@@ -36,5 +36,5 @@ Vagrant.configure("2") do |config|
         v.name =  ENV['VAGRANT_HOSTNAME']
         v.customize ["modifyvm", :id, "--memory", ENV['VAGRANT_MEMORY_MB']]
     end
- 
+
 end

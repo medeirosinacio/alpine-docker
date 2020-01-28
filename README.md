@@ -16,6 +16,16 @@ Para instalar o Vagrant, baixe o pacote ou o instalador apropriado a partir da  
 
 Se um pacote Vagrant não estiver disponível para sua plataforma, você também pode fazer a instalação usando o a  [RubyGems](http://rubygems.org/gems/vagrant)  via  `gem install vagrant`. No entanto perceba que os pacotes são os métodos de instalação preferidos e melhor suportados.
 
+## Instalar os plugins necessarios
+
+> vagrant plugin install vagrant-env
+
+> vagrant plugin install vagrant-disksize
+
+> vagrant plugin install vagrant-reload
+
+> vagrant plugin install vagrant-alpine
+
 ## Subindo o Servidor
 
  1. Crie um arquivo _.env_ e popule as seguintes variaveis:
