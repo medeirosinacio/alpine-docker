@@ -7,11 +7,15 @@ if [ ! -f /var/updatesystem ]
     sudo su
 	echo http://dl-cdn.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories
 
-    echo "Atualizando sistema..."
+    # Seta cores para a saida shell
+	nc='\033[0m'
+    g='\033[0;32m'
+
+    echo -e "\n${g}Atualizando sistema...${nc}"
 	apk update
 	apk upgrade
 
-	echo "Reiniciando o sistema..."
+	echo -e "\n${g}Reiniciando o sistema...${nc}"
 	touch /var/updatesystem
 
 	exit

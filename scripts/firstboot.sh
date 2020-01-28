@@ -6,29 +6,32 @@ if [ ! -f /var/firstboot ]
 
     sudo su
 
-    echo "Instalando serviços essenciais..."
+    nc='\033[0m'
+    g='\033[0;32m'
+
+    echo -e "\n${g}Instalando serviços essenciais...${nc}"
 	apk add zip unzip curl wget vim tree net-tools
 
-    echo "Instalando Git..."
+    echo -e "\n${g}Instalando Git...${nc}"
     apk add git
 
-    echo "Instalando Composer..."
+    echo -e "\n${g}Instalando Composer...${nc}"
     apk add composer
 
-	echo "Instalando Docker..."
+	echo -e "\n${g}Instalando Docker...${nc}"
 	apk add docker
 	rc-update add docker boot
 	service docker start
 	adduser vagrant docker
 	addgroup -S vagrant docker
 
-	echo "Instalando docker-compose..."
+	echo -e "\n${g}Instalando docker-compose...${nc}"
 	apk add --no-cache python python-dev py-pip
 	apk add --no-cache build-base libffi-dev openssl-dev libgcc gcc libc-dev make
 	pip install --upgrade pip
 	pip install docker-compose
 
-	echo "Outras dependências..."
+	echo -e "\n${g}Outras dependências...${nc}"
 	apk add php7
 
     touch /var/firstboot
