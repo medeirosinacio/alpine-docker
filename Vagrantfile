@@ -24,11 +24,16 @@ Vagrant.configure("2") do |config|
 	# Configura Hostname
     config.vm.hostname = ENV['VAGRANT_HOSTNAME']
 
-	# Arquivo que ira inicializar quando a maquina subir pela primeira vez
+	# Script de atualização do sistema
  	config.vm.provision "shell", path: "./scripts/updatesystem.sh", privileged: true
+
+ 	# Reboot
     config.vm.provision :reload
+
+    # Script para instalações de pacotes
     config.vm.provision "shell", path: "./scripts/firstboot.sh", privileged: true
 
+    # Script para rodar a cada boot
     #config.vm.provision "shell", path: "bootstrap.sh"
 
 	# Pastas mapeadas
