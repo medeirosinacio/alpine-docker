@@ -7,18 +7,18 @@ if [ ! -f /var/firstboot ]
     sudo su
 
     nc='\033[0m'
-    g='\033[0;32m'
+    g='\n\033[0;32m'
 
-    echo -e "\n${g}Instalando serviços essenciais...${nc}"
+    echo -e "${g}Instalando serviços essenciais...${nc}"
 	apk add zip unzip curl wget vim tree net-tools
 
-    echo -e "\n${g}Instalando Git...${nc}"
+    echo -e "${g}Instalando Git...${nc}"
     apk add git
 
-    echo -e "\n${g}Instalando Composer...${nc}"
+    echo -e "${g}Instalando Composer...${nc}"
     apk add composer
 
-	echo -e "\n${g}Instalando Docker...${nc}"
+	echo -e "${g}Instalando Docker...${nc}"
 	apk add docker
 	rc-update add docker boot
 	service docker start
@@ -31,7 +31,7 @@ if [ ! -f /var/firstboot ]
 	pip install --upgrade pip
 	pip install docker-compose
 
-	echo -e "\n${g}Outras dependências...${nc}"
+	echo -e "${g}Outras dependências...${nc}"
 	apk add php7
 
     touch /var/firstboot

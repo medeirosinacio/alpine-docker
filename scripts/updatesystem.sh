@@ -9,13 +9,13 @@ if [ ! -f /var/updatesystem ]
 
     # Seta cores para a saida shell
 	nc='\033[0m'
-    g='\033[0;32m'
+    g='\n\033[0;32m'
 
-    echo -e "\n${g}Atualizando sistema...${nc}"
+    echo -e "${g}Atualizando sistema...${nc}"
 	apk update
 	apk upgrade
 
-	echo -e "\n${g}Reiniciando o sistema...${nc}"
+	echo -e "${g}Reiniciando o sistema...${nc}"
 	touch /var/updatesystem
 
 	exit
