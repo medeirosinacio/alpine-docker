@@ -1,5 +1,5 @@
 # dependencia para verificar se os plugins estão instalados
-require File.dirname(__FILE__)+"/scripts/dependency_manager"
+require File.dirname(__FILE__)+"/lib/dependency-manager/dependency_manager"
 
 # Plugins locais que o projeto requer
 check_plugins ["vagrant-env", "vagrant-disksize", "vagrant-reload", "vagrant-vbguest"]
