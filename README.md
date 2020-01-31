@@ -27,21 +27,6 @@ VAGRANT_MEMORY_MB=2048
 
 > vagrant up
 
- 3. Apos a isntalação, acesse a maquina com:
+ 3. Apos a inntalação, acesse a maquina com:
  
 > vagrant ssh
-
-
----- #log
-
-vagrant plugin repair
-vagrant plugin expunge --reinstall
-
-https://stackoverflow.com/questions/28328775/virtualbox-mount-vboxsf-mounting-failed-with-the-error-no-such-device
-https://github.com/aidanns/vagrant-reload/issues/4
-https://stackoverflow.com/questions/43492322/vagrant-was-unable-to-mount-virtualbox-shared-folders
-https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins
-https://docs.docker.com/compose/install/
-https://virtualenv.pypa.io/en/latest/
-https://docs.python-guide.org/dev/virtualenvs/
-https://www.treinaweb.com.br/blog/criando-ambientes-virtuais-para-projetos-python-com-o-virtualenv/
