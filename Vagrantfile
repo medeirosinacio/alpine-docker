@@ -15,11 +15,6 @@ Vagrant.configure("2") do |config|
 	# Habilita .env | Requer: "vagrant plugin install vagrant-env" | ENV['ENV_NAME']
 	config.env.enable
 
-    # Copia a chave SSH se estiver habilitado
-    if ENV['SSH_COPY'] == 'true'
-       copy_ssh_keys ENV['SSH_COPY_PRIVATE_KEY']
-    end
-
 	# Imagem base | https://app.vagrantup.com/boxes/search
 	config.vm.box = "generic/alpine" + ENV['VAGRANT_ALPINE_VERSION']
 
@@ -41,8 +36,17 @@ Vagrant.configure("2") do |config|
     # Script para instalações de pacotes
     config.vm.provision "shell", path: "./scripts/firstboot.sh", privileged: true
 
-    # Script para rodar a cada boot
-    #config.vm.provision "shell", path: "bootstrap.sh"
+    # Copia a chave SSH
+    if ENV['SSH_COPY'] == 'true'
+       SSH_COPY_PRIVATE_KEY = copy_ssh_keys ENV['SSH_COPY_PRIVATE_KEY']
+       SSH_COPY_PUBLIC_KEY = copy_ssh_keys ENV['SSH_COPY_PUBLIC_KEY']
+       if SSH_COPY_PRIVATE_KEY != 0
+            config.vm.provision "shell", path: "./scripts/sshcopy.sh", :args => [SSH_COPY_PRIVATE_KEY, SSH_COPY_PUBLIC_KEY]
+       end
+    end
+
+
+    config.vm.provision "shell", path: "./scripts/init-agenda.sh"
 
 	# Pastas mapeadas
     config.vm.synced_folder "./html", "/var/www/html", type: "rsync"
