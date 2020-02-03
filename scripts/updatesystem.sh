@@ -12,6 +12,11 @@ if [ ! -f /var/updatesystem ]
     s="\n"
     g='\033[0;32m'
 
+    echo -e "${s}${g}Ajuste de timezone...${nc}"
+	rm -rf /usr/share/zoneinfo/*
+	apk add tzdata
+	cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+
     echo -e "${s}${g}Atualizando sistema...${nc}"
 	apk update
 	apk upgrade
