@@ -28,3 +28,7 @@ phpunit.phar
 
 # env
 .env
+
+# Folder to sync
+html/*
+!html/.gitignore
