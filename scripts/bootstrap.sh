@@ -2,9 +2,7 @@
 
     sudo su
 
-    nc='\033[0m'
-    s="\n"
-    g='\033[0;32m'
+    source /var/hostvars
 
     echo -e "${s}${g}Inicializando script bootstrap...${nc}"
 

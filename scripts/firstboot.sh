@@ -6,9 +6,7 @@ if [ ! -f /var/firstboot ]
 
     sudo su
 
-    nc='\033[0m'
-    s="\n"
-    g='\033[0;32m'
+    source /var/hostvars
 
     echo -e "${s}${g}Instalando serviços essenciais...${nc}"
 	apk add zip unzip curl wget vim tree net-tools
