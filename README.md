@@ -16,6 +16,7 @@ Ela gera uma VM com linux Alpine de 100mb com todos os recursos essenciais insta
 ``` 
 #ALL
 IP_HOST=192.168.70.7                        #STRING
+TIME_ZONE=America/Sao_Paulo                 #STRING
 
 #Vagrantfile
 VAGRANT_ALPINE_VERSION=38					#INT
