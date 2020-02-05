@@ -15,13 +15,23 @@ Ela gera uma VM com linux Alpine de 100mb com todos os recursos essenciais insta
  
 ``` 
 #ALL
-IP_HOST=192.168.70.71
+IP_HOST=192.168.70.7                        #STRING
 
 #Vagrantfile
-VAGRANT_ALPINE_VERSION=38
-VAGRANT_HOSTNAME=alpine-docker
-VAGRANT_DISKSIZE_GB=50
-VAGRANT_MEMORY_MB=2048
+VAGRANT_ALPINE_VERSION=38					#INT
+VAGRANT_HOSTNAME=alpine-docker		        #STRING
+VAGRANT_DISKSIZE_GB=50						#INT
+VAGRANT_MEMORY_MB=2048						#INT
+
+# OPCIONAL
+
+# SSH
+# Essa configuração serve para copiar a chave SSH da sua maquina local para o servidor, desta forma você consegue
+# usar o git sem usuario e senha e sem ter que cadastrar uma nova chave ssh no repositorio.
+# NOTA: Não recomendado usar essa opção em uma maquina de produção, use local.
+SSH_COPY=true
+SSH_COPY_PRIVATE_KEY="~/.ssh/id_rsa"
+SSH_COPY_PUBLIC_KEY="~/.ssh/id_rsa.pub"
  ```
  2. Execute o comando:
 

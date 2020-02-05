@@ -16,7 +16,7 @@ def check_plugins(dependencies)
 	if ['up', 'reload'].include?(ARGV[0]) && !skip_dependency_manager
 		installed_dependencies = []
 
-		puts "\033[1m" << "Checking dependencies..." << "\e[0m"
+		puts "\033[0;32m" << "Checking dependencies..." << "\e[0m"
 
 		raw_output = `vagrant plugin list`
 		raw_list = raw_output.split("\n")

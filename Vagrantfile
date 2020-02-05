@@ -1,6 +1,9 @@
 # dependencia para verificar se os plugins estão instalados
 require File.dirname(__FILE__)+"/lib/dependency-manager/dependency_manager"
 
+# dependencia para copiar chave ssh para o servidor
+require File.dirname(__FILE__)+"/lib/ssh-copy/ssh_copy"
+
 # Plugins locais que o projeto requer
 check_plugins ["vagrant-env", "vagrant-disksize", "vagrant-reload", "vagrant-vbguest"]
 
@@ -28,16 +31,25 @@ Vagrant.configure("2") do |config|
  	config.vm.provision "shell", path: "./scripts/updatesystem.sh", privileged: true
 
  	# Reboot
-    config.vm.provision :reload
+    #config.vm.provision :reload
 
     # Script para instalações de pacotes
     config.vm.provision "shell", path: "./scripts/firstboot.sh", privileged: true
 
-    # Script para rodar a cada boot
-    #config.vm.provision "shell", path: "bootstrap.sh"
+    # Copia a chave SSH
+    if ENV['SSH_COPY'] == 'true'
+       SSH_COPY_PRIVATE_KEY = copy_ssh_keys ENV['SSH_COPY_PRIVATE_KEY']
+       SSH_COPY_PUBLIC_KEY = copy_ssh_keys ENV['SSH_COPY_PUBLIC_KEY']
+       if SSH_COPY_PRIVATE_KEY != 0
+            config.vm.provision "shell", path: "./scripts/sshcopy.sh", :args => [SSH_COPY_PRIVATE_KEY, SSH_COPY_PUBLIC_KEY]
+       end
+    end
 
 	# Pastas mapeadas
-    config.vm.synced_folder "./html", "/var/www/html", type: "rsync"
+	config.vm.synced_folder ".", "/vagrant", disabled: true
+    config.vm.synced_folder "./html", "/var/www/html"
+	
+	#config.vm.provision "shell", path: "./scripts/init-agenda.sh"
 
     config.vm.provider "virtualbox" do |v|
         v.name =  ENV['VAGRANT_HOSTNAME']
