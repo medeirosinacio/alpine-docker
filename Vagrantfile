@@ -1,17 +1,9 @@
-# dependencia para verificar se os plugins estão instalados
-require File.dirname(__FILE__)+"/lib/dependency-manager/dependency_manager"
+# Carrega as dependencias
+Dir[File.join((Dir.pwd) + "/lib/", "**/*.rb")].each do |f|
+      require f
+end
 
-# dependencia para copiar chave ssh para o servidor
-require File.dirname(__FILE__)+"/lib/ssh-copy/ssh_copy"
-
-# dependencia para copiar as variaveis do arquivo .env para o host
-require File.dirname(__FILE__)+"/lib/env-to-server/env_to_server"
-
-# Dir[File.join(File.dirname(__FILE__)+"/lib/", "**/*.rb")].each do |f|
-#       require f
-# end
-
-# Plugins locais que o projeto requer
+# Plugins locais que o projeto requer | Dependencia "dependency-manager" para verificar se os plugins estão instalados
 check_plugins ["vagrant-env", "vagrant-disksize", "vagrant-reload", "vagrant-vbguest"]
 
 Vagrant.configure("2") do |config|
@@ -34,20 +26,20 @@ Vagrant.configure("2") do |config|
 	# Configura Hostname
     config.vm.hostname = ENV['VAGRANT_HOSTNAME']
 
-    # Script que seta as variaveis no sistema
+    # Dependencia "env-to-server" para copiar as variaveis do arquivo .env para os scripts bash
     GLOBAL_ENV = set_env Dir.pwd
     config.vm.provision "shell", inline: GLOBAL_ENV, run: "always"
 
 	# Script de atualização do sistema
  	config.vm.provision "shell", path: "./scripts/updatesystem.sh", privileged: true
 
- 	# Reboot
+ 	# Reiniciar servidor apos updatesystem.sh
     config.vm.provision :reload
 
     # Script para instalações de pacotes
     config.vm.provision "shell", path: "./scripts/firstboot.sh", privileged: true
 
-    # Copia a chave SSH
+    # Copia a chave SSH | Dependencia "ssh-copy" para copiar chave ssh para o servidor
     if ENV['SSH_COPY'] == 'true'
        SSH_COPY_PRIVATE_KEY = copy_ssh_keys ENV['SSH_COPY_PRIVATE_KEY']
        SSH_COPY_PUBLIC_KEY = copy_ssh_keys ENV['SSH_COPY_PUBLIC_KEY']

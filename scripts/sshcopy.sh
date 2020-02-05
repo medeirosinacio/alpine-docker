@@ -2,7 +2,7 @@
 
     source /var/hostvars
 
-    echo -e "${s}${g}Configurando SSH remoto com as credenciais locais...${nc}"
+    echo -e "${g}Configurando SSH remoto com as credenciais locais...${nc}"
 
     # Copia chave para o arquivo do usuario
     echo  "$1" >  /home/vagrant/.ssh/id_rsa
