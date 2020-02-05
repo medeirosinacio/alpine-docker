@@ -23,15 +23,23 @@ VAGRANT_HOSTNAME=alpine-docker		        #STRING
 VAGRANT_DISKSIZE_GB=50						#INT
 VAGRANT_MEMORY_MB=2048						#INT
 
-# OPCIONAL
+# Versão dos modulos do VirtualBox
+# NOTA 01/2020: Versões mais novas desses modulos quebram a sincronização das pastas
+VB_GUEST_FIX=true                           #BOOLEAN
+VB_GUEST_ADD_VERSION=5.1.30-r0              #STRING
+VB_GUEST_MOD_VIRT_VERSION=4.14.167-r0       #STRING
+
+############
+# OPCIONAL #
+############
 
 # SSH
 # Essa configuração serve para copiar a chave SSH da sua maquina local para o servidor, desta forma você consegue
 # usar o git sem usuario e senha e sem ter que cadastrar uma nova chave ssh no repositorio.
 # NOTA: Não recomendado usar essa opção em uma maquina de produção, use local.
-SSH_COPY=true
-SSH_COPY_PRIVATE_KEY="~/.ssh/id_rsa"
-SSH_COPY_PUBLIC_KEY="~/.ssh/id_rsa.pub"
+SSH_COPY=true                                   #BOOLEAN
+SSH_COPY_PRIVATE_KEY="~/.ssh/id_rsa"            #STRING
+SSH_COPY_PUBLIC_KEY="~/.ssh/id_rsa.pub"         #STRING
  ```
  2. Execute o comando:
 

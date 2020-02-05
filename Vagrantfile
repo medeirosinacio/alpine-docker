@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
  	config.vm.provision "shell", path: "./scripts/updatesystem.sh", privileged: true
 
  	# Reboot
-    #config.vm.provision :reload
+    config.vm.provision :reload
 
     # Script para instalações de pacotes
     config.vm.provision "shell", path: "./scripts/firstboot.sh", privileged: true
