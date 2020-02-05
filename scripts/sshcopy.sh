@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-    nc='\033[0m'
-    s="\n"
-    g='\033[0;32m'
+    source /var/hostvars
 
     echo -e "${s}${g}Configurando SSH remoto com as credenciais locais...${nc}"
 

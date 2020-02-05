@@ -5,26 +5,31 @@ if [ ! -f /var/updatesystem ]
     then
 
     sudo su
+
+    source /var/hostvars
+
 	echo http://dl-cdn.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories
 
-    # Seta cores para a saida shell
-	nc='\033[0m'
-    s="\n"
-    g='\033[0;32m'
-
-    echo -e "${s}${g}Ajuste de timezone...${nc}"
+    echo -e "${g}Configurando data e hora...${nc}"
 	rm -rf /usr/share/zoneinfo/*
 	apk add tzdata
-	cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+	cp /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
 
-    echo -e "${s}${g}Atualizando sistema...${nc}"
+    echo -e "${g}Atualizando sistema...${nc}"
 	apk update
 	apk upgrade
 
-	apk add virtualbox-guest-additions=5.1.30-r0
-	apk add virtualbox-guest-modules-virt=4.14.167-r0
+    if [ "${VB_GUEST_FIX}" = true ] || [ "${VB_GUEST_FIX}" = 'true' ]
 
-	echo -e "${s}${g}Reiniciando o sistema...${nc}"
+        then
+
+        echo -e "${g}Configurando adicionais de convidado do VirtualBox...${nc}"
+        apk add virtualbox-guest-additions=${VB_GUEST_ADD_VERSION}
+	    apk add virtualbox-guest-modules-virt=${VB_GUEST_MOD_VIRT_VERSION}
+
+    fi
+
+	echo -e "${g}Reiniciando o sistema...${nc}"
 	touch /var/updatesystem
 
 	exit
