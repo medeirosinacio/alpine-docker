@@ -21,6 +21,9 @@ if [ ! -f /var/updatesystem ]
 	apk update
 	apk upgrade
 
+	apk add virtualbox-guest-additions=5.1.30-r0
+	apk add virtualbox-guest-modules-virt=4.14.167-r0
+
 	echo -e "${s}${g}Reiniciando o sistema...${nc}"
 	touch /var/updatesystem
 
