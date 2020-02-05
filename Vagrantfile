@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
  	config.vm.provision "shell", path: "./scripts/updatesystem.sh", privileged: true
 
  	# Reboot
-    config.vm.provision :reload
+    #config.vm.provision :reload
 
     # Script para instalações de pacotes
     config.vm.provision "shell", path: "./scripts/firstboot.sh", privileged: true
@@ -45,11 +45,11 @@ Vagrant.configure("2") do |config|
        end
     end
 
-
-    config.vm.provision "shell", path: "./scripts/init-agenda.sh"
-
 	# Pastas mapeadas
-    config.vm.synced_folder "./html", "/var/www/html", type: "rsync"
+	config.vm.synced_folder ".", "/vagrant", disabled: true
+    config.vm.synced_folder "./html", "/var/www/html"
+	
+	#config.vm.provision "shell", path: "./scripts/init-agenda.sh"
 
     config.vm.provider "virtualbox" do |v|
         v.name =  ENV['VAGRANT_HOSTNAME']
