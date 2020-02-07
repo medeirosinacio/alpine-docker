@@ -1,4 +1,4 @@
-# Alpine Docker | Server by Vagrant Box
+# Alpine Docker | Server Vagrant Box
 
 Está é uma Vagrant Box completa para começar a desenvolver com Docker!
 
