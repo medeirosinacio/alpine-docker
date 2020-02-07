@@ -8,7 +8,7 @@ check_plugins ["vagrant-env", "vagrant-disksize", "vagrant-reload", "vagrant-vbg
 
 Vagrant.configure("2") do |config|
 
-    # Seta a não instalação VBoxGuestAdditions
+    # Seta a não atualização do VBoxGuestAdditions
     config.vbguest.auto_update = false
 
 	# Habilita .env | Requer: "vagrant plugin install vagrant-env" | ENV['ENV_NAME']
