@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-    sudo su
+sudo su
 
-    source /var/hostvars
+source /var/hostvars
 
-    echo -e "${s}${g}Inicializando script bootstrap...${nc}"
+echo -e "${s}${g}Inicializando script bootstrap...${nc}"
 
-    exit
+exit
