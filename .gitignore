@@ -29,3 +29,5 @@ phpunit.phar
 # env
 .env
 
+shared/*
+!shared/html/.gitkeep
