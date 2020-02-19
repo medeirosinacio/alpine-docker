@@ -50,7 +50,8 @@ Vagrant.configure("2") do |config|
 
 	# Pastas mapeadas
 	config.vm.synced_folder ".", "/vagrant", disabled: true
-    config.vm.synced_folder "./html", "/var/www/html"
+    config.vm.synced_folder "./shared", "/home/vagrant/shared"
+    config.vm.synced_folder "./shared/html", "/var/www/html"
 
     config.vm.provider "virtualbox" do |v|
         v.name =  ENV['VAGRANT_HOSTNAME']
