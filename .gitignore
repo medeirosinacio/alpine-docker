@@ -29,6 +29,3 @@ phpunit.phar
 # env
 .env
 
-# Folder to sync
-shared/*
-!shared/html/.gitkeep
