@@ -56,7 +56,8 @@ Vagrant.configure("2") do |config|
 
     config.vm.provider "virtualbox" do |v|
         v.name =  ENV['VAGRANT_HOSTNAME']
-        v.customize ["modifyvm", :id, "--memory", ENV['VAGRANT_MEMORY_MB']]
+        v.cpus = ENV['VAGRANT_CPU']
+        v.memory = ENV['VAGRANT_MEMORY_MB']
     end
 
 end
