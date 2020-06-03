@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
 	config.disksize.size = ENV['VAGRANT_DISKSIZE_GB'] + "GB"
 
 	# Configura a network
-	config.vm.network "private_network", ip: ENV['IP_HOST']
+	config.vm.network "public_network", ip: ENV['IP_HOST']
 
 	# Configura Hostname
     config.vm.hostname = ENV['VAGRANT_HOSTNAME']
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
 	# Pastas mapeadas
 	config.vm.synced_folder ".", "/vagrant", disabled: true
     config.vm.synced_folder "./shared", "/home/vagrant/shared"
-    config.vm.synced_folder "./shared/html", "/var/www/html"
+    config.vm.synced_folder "../../", "/var/www/html"
 
     config.vm.provider "virtualbox" do |v|
         v.name =  ENV['VAGRANT_HOSTNAME']
