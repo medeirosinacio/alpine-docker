@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
 
 	# Imagem base | https://app.vagrantup.com/boxes/search
 	config.vm.box = "generic/alpine" + ENV['VAGRANT_ALPINE_VERSION']
+	config.vm.box_version = ENV['VAGRANT_BOX_VERSION']
 
 	# Seta o tamanho do disco | Requer: "vagrant plugin install vagrant-disksize"
 	config.disksize.size = ENV['VAGRANT_DISKSIZE_GB'] + "GB"
