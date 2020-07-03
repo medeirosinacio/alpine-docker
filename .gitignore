@@ -30,4 +30,4 @@ phpunit.phar
 .env
 
 shared/*
-!shared/html/.gitkeep
+!**/.gitkeep

@@ -42,17 +42,9 @@ Vagrant.configure("2") do |config|
        end
     end
 
- 	# Reiniciar servidor apos updatesystem.sh
-    config.vm.provision :reload
-
-    # Script para instalações de pacotes
-    config.vm.provision "shell", path: "./scripts/firstboot.sh", privileged: true, run: "always"
-
-    config.vm.provision "shell", path: "./scripts/init.sh", privileged: true, run: "always"
-
-	# Pastas mapeadas
-	config.vm.synced_folder ".", "/vagrant", disabled: true
-    config.vm.synced_folder "../", "/app"
+    # Pastas mapeadas
+ 	config.vm.synced_folder ".", "/vagrant", disabled: true
+    config.vm.synced_folder "./shared", "/home/vagrant/shared"
 
     config.vm.provider "virtualbox" do |v|
         v.name =  ENV['VAGRANT_HOSTNAME']
