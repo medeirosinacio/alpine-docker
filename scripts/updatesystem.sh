@@ -1,25 +1,29 @@
 #!/usr/bin/env bash
 
-if [ ! -f /var/updatesystem ]; then
+if [ ! -f /var/updatesystem ]
 
-  sudo su
+    then
 
-  source /var/hostvars
+    sudo su
 
-  echo http://dl-cdn.alpinelinux.org/alpine/latest-stable/community >>/etc/apk/repositories
+    source /var/hostvars
 
-  echo -e "${g}Configurando data e hora...${nc}"
-  rm -rf /usr/share/zoneinfo/*
-  apk add tzdata
-  cp /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
+	echo http://dl-3.alpinelinux.org/alpine/latest-stable/main > /etc/apk/repositories
+    echo http://dl-3.alpinelinux.org/alpine/latest-stable/community >> /etc/apk/repositories
 
-  echo -e "${g}Atualizando sistema...${nc}"
-  apk update
-  apk upgrade --no-cache -a
+    echo -e "${g}Configurando data e hora...${nc}"
+	rm -rf /usr/share/zoneinfo/*
+	apk add tzdata
+	cp /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
 
-  echo -e "${g}Reiniciando o sistema...${nc}"
-  touch /var/updatesystem
+    echo -e "${g}Atualizando sistema...${nc}"
+	apk update
+    apk add --upgrade apk-tools
+	apk upgrade --available
 
-  exit
+	echo -e "${g}Reiniciando o sistema...${nc}"
+	touch /var/updatesystem
+
+	exit
 
 fi
