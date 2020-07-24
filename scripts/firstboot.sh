@@ -20,9 +20,7 @@ if [ ! -f /var/firstboot ]; then
 	addgroup -S vagrant docker
 
 	echo -e "${g}Instalando docker-compose...${nc}"
-	apk add --no-cache python3 python3-dev py-pip
-	apk add --no-cache build-base libffi-dev openssl-dev libgcc gcc libc-dev make
-	pip install docker-compose
+	apk add docker-compose
 
 	touch /var/firstboot
 	exit
